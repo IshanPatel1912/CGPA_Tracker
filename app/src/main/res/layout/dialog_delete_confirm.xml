@@ -6,38 +6,48 @@
     android:background="@drawable/dialog_background"
     android:padding="24dp">
 
-    <ImageView
-        android:id="@+id/iconWarning"
+    <FrameLayout
+        android:id="@+id/iconContainer"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="@android:drawable/ic_dialog_alert"
-        app:tint="#D32F2F"
+        android:background="@drawable/dialog_background"
+        android:backgroundTint="@color/danger_soft"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iconWarning"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_warning_triangle"
+            app:tint="@color/danger" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/tvDeleteTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="Delete Semester?"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="#D32F2F"
-        app:layout_constraintStart_toEndOf="@+id/iconWarning"
-        app:layout_constraintTop_toTopOf="@+id/iconWarning"
-        app:layout_constraintBottom_toBottomOf="@+id/iconWarning" />
+        android:textColor="@color/text_primary"
+        app:layout_constraintStart_toEndOf="@+id/iconContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iconContainer"
+        app:layout_constraintBottom_toBottomOf="@+id/iconContainer" />
 
     <TextView
         android:id="@+id/tvMessage"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="This will remove the semester and all its subjects forever. Are you sure?"
-        android:textSize="16sp"
-        android:textColor="#666666"
+        android:layout_marginTop="16dp"
+        android:text="This will permanently delete this semester and all of its enrolled subjects. This action cannot be undone."
+        android:textSize="14sp"
+        android:textColor="@color/text_secondary"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iconWarning" />
+        app:layout_constraintTop_toBottomOf="@+id/iconContainer" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,24 +59,25 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCancelDelete"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:text="Cancel"
-            android:textColor="#333333"
-            android:backgroundTint="#F0F0F0"
-            app:cornerRadius="12dp" />
+            android:textColor="@color/text_secondary"
+            android:backgroundTint="@color/surface_variant"
+            app:cornerRadius="14dp"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnConfirmDelete"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:layout_marginStart="8dp"
             android:text="Delete"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#D32F2F"
-            app:cornerRadius="12dp" />
+            android:backgroundTint="@color/danger"
+            app:cornerRadius="14dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

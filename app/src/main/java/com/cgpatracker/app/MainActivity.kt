@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cgpatracker.app.data.entity.Semester
 import com.cgpatracker.app.ui.SemesterAdapter
+import com.cgpatracker.app.ui.SubjectActivity
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
@@ -33,9 +34,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // --- FIX STATUS BAR COLOR (Gray Background + Dark Icons) ---
-        window.statusBarColor = Color.parseColor("#F5F5F5") // Matches background
-        // Make Time/Battery icons BLACK (because background is light)
+        // Status bar matches light slate background
+        window.statusBarColor = Color.parseColor("#F8FAFC")
         WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars = true
 
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = SemesterAdapter(
             onClick = { semester ->
-                val intent = android.content.Intent(this, com.cgpatracker.app.ui.SubjectActivity::class.java)
+                val intent = android.content.Intent(this, SubjectActivity::class.java)
                 intent.putExtra("SEMESTER_ID", semester.semesterId)
                 intent.putExtra("SEMESTER_NAME", semester.semesterName)
                 startActivity(intent)
@@ -88,33 +88,37 @@ class MainActivity : AppCompatActivity() {
             labels.add(sem.semesterName)
 
             when {
-                sem.semesterGpa >= 8.0 -> colors.add(Color.parseColor("#4CAF50"))
-                sem.semesterGpa >= 6.0 -> colors.add(Color.parseColor("#FF9800"))
-                else -> colors.add(Color.parseColor("#D32F2F"))
+                sem.semesterGpa >= 8.0 -> colors.add(Color.parseColor("#10B981")) // Emerald
+                sem.semesterGpa >= 6.0 -> colors.add(Color.parseColor("#F59E0B")) // Amber
+                else -> colors.add(Color.parseColor("#EF4444")) // Rose
             }
         }
 
         val dataSet = BarDataSet(entries, "SGPA")
         dataSet.colors = colors
-        dataSet.valueTextSize = 12f
-        dataSet.valueTextColor = Color.BLACK
+        dataSet.valueTextSize = 11f
+        dataSet.valueTextColor = Color.parseColor("#0F172A")
 
         val data = BarData(dataSet)
-        data.barWidth = 0.5f
+        data.barWidth = 0.45f
 
         barChart.data = data
         barChart.description.isEnabled = false
         barChart.legend.isEnabled = false
-        barChart.animateY(1000)
+        barChart.animateY(800)
 
         val xAxis = barChart.xAxis
         xAxis.valueFormatter = IndexAxisValueFormatter(labels)
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.granularity = 1f
         xAxis.setDrawGridLines(false)
+        xAxis.textColor = Color.parseColor("#64748B")
 
         barChart.axisLeft.axisMinimum = 0f
         barChart.axisLeft.axisMaximum = 10f
+        barChart.axisLeft.textColor = Color.parseColor("#64748B")
+        barChart.axisLeft.setDrawGridLines(true)
+        barChart.axisLeft.gridColor = Color.parseColor("#E2E8F0")
         barChart.axisRight.isEnabled = false
 
         barChart.invalidate()

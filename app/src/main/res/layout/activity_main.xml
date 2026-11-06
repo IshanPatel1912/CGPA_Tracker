@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="@color/background"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
@@ -22,51 +22,63 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="80dp">
+            android:paddingBottom="96dp">
 
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
+            <!-- App Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CGPA Tracker"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:layout_marginTop="32dp"
-                android:layout_marginStart="24dp" />
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                android:paddingTop="28dp"
+                android:paddingBottom="12dp">
 
-            <TextView
-                android:id="@+id/tvSubtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Your Academic Progress"
-                android:textSize="16sp"
-                android:textColor="#666666"
-                android:layout_marginTop="4dp"
-                android:layout_marginStart="24dp" />
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CGPA Tracker"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
 
+                <TextView
+                    android:id="@+id/tvSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Academic performance overview"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <!-- Hero CGPA Display Card -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardCgpa"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="8dp"
                 app:cardCornerRadius="24dp"
-                app:cardElevation="8dp"
-                app:cardBackgroundColor="#6200EE">
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/primary">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingVertical="24dp"
+                    android:paddingHorizontal="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Current CGPA"
-                        android:textColor="#CCFFFFFF"
-                        android:textSize="18sp" />
+                        android:text="CUMULATIVE GPA"
+                        android:textColor="#C7D2FE"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.08" />
 
                     <TextView
                         android:id="@+id/tvCgpaValue"
@@ -74,47 +86,89 @@
                         android:layout_height="wrap_content"
                         android:text="0.00"
                         android:textColor="#FFFFFF"
-                        android:textSize="56sp"
-                        android:textStyle="bold" />
+                        android:textSize="54sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="2dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Overall Academic Standing"
+                        android:textColor="#E0E7FF"
+                        android:textSize="12sp"
+                        android:layout_marginTop="4dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- SGPA Trend Chart Card -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardGraph"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginHorizontal="24dp"
+                android:layout_height="210dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/surface">
 
-                <com.github.mikephil.charting.charts.BarChart
-                    android:id="@+id/chartSemesters"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="12dp" />
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SEMESTER PERFORMANCE"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.06"
+                        android:textColor="@color/text_secondary" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/chartSemesters"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <!-- Semesters Header -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Semesters"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Semester List -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvSemesters"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:nestedScrollingEnabled="false" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <!-- Minimal Add Semester FAB -->
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fabAddSemester"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
+        android:layout_margin="20dp"
         android:text="Add Semester"
         android:textColor="#FFFFFF"
-        android:backgroundTint="#6200EE"
-        app:icon="@android:drawable/ic_input_add"
+        android:backgroundTint="@color/primary"
+        app:icon="@drawable/ic_add"
         app:iconTint="#FFFFFF"
+        app:cornerRadius="16dp"
+        app:elevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

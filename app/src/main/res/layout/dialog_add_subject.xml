@@ -16,66 +16,99 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add New Subject"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginBottom="16dp"/>
+            android:textColor="@color/text_primary" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter subject details and internal evaluation"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Type Selector -->
         <RadioGroup
             android:id="@+id/radioGroupType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="14dp">
 
             <RadioButton
                 android:id="@+id/rbTheory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Theory"
+                android:text="Theory Course"
                 android:checked="true"
-                android:layout_marginEnd="16dp"/>
+                android:textColor="@color/text_primary"
+                android:buttonTint="@color/primary"
+                android:layout_marginEnd="16dp" />
 
             <RadioButton
                 android:id="@+id/rbPractical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Practical"/>
+                android:text="Practical Lab"
+                android:textColor="@color/text_primary"
+                android:buttonTint="@color/primary" />
         </RadioGroup>
 
+        <!-- Subject Name Input -->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxCornerRadiusTopStart="14dp"
+            app:boxCornerRadiusTopEnd="14dp"
+            app:boxCornerRadiusBottomStart="14dp"
+            app:boxCornerRadiusBottomEnd="14dp"
+            app:boxStrokeColor="@color/primary"
             android:hint="Subject Name">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSubjectName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapWords"/>
+                android:textColor="@color/text_primary"
+                android:inputType="textCapWords" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Credits Input -->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Credits">
+            android:layout_marginTop="10dp"
+            app:boxCornerRadiusTopStart="14dp"
+            app:boxCornerRadiusTopEnd="14dp"
+            app:boxCornerRadiusBottomStart="14dp"
+            app:boxCornerRadiusBottomEnd="14dp"
+            app:boxStrokeColor="@color/primary"
+            android:hint="Credits (e.g. 3 or 4)">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCredits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"/>
+                android:textColor="@color/text_primary"
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Section Header -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter Marks"
+            android:text="MARKS BREAKDOWN"
+            android:textSize="11sp"
             android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:textColor="#6200EE"/>
+            android:letterSpacing="0.06"
+            android:layout_marginTop="18dp"
+            android:textColor="@color/primary" />
 
+        <!-- Theory Marks Inputs -->
         <LinearLayout
             android:id="@+id/layoutTheoryMarks"
             android:layout_width="match_parent"
@@ -88,13 +121,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="6dp"
+                app:boxCornerRadiusTopStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusBottomEnd="14dp"
+                app:boxStrokeColor="@color/primary"
                 android:hint="Mid Sem (25)">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etMidSem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"/>
+                    android:textColor="@color/text_primary"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -102,16 +142,24 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="6dp"
+                app:boxCornerRadiusTopStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusBottomEnd="14dp"
+                app:boxStrokeColor="@color/primary"
                 android:hint="Internal (25)">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etInternal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"/>
+                    android:textColor="@color/text_primary"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
+        <!-- Practical Marks Input -->
         <LinearLayout
             android:id="@+id/layoutPracticalMarks"
             android:layout_width="match_parent"
@@ -124,26 +172,41 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:boxCornerRadiusTopStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusBottomEnd="14dp"
+                app:boxStrokeColor="@color/primary"
                 android:hint="Internal Assessment (50)">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etInternalPractical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"/>
+                    android:textColor="@color/text_primary"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
+        <!-- End Sem Marks Input -->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
+            app:boxCornerRadiusTopStart="14dp"
+            app:boxCornerRadiusTopEnd="14dp"
+            app:boxCornerRadiusBottomStart="14dp"
+            app:boxCornerRadiusBottomEnd="14dp"
+            app:boxStrokeColor="@color/primary"
             android:hint="End Sem Exam">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEndSem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"/>
+                android:textColor="@color/text_primary"
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -151,17 +214,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="*Theory: End Sem (100) / 2 = 50"
-            android:textSize="12sp"
-            android:textColor="#666666"
-            android:layout_marginTop="4dp"/>
+            android:textSize="11sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginTop="4dp" />
 
         <CheckBox
             android:id="@+id/cbAbsent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mark as Absent"
-            android:layout_marginTop="8dp"/>
+            android:textColor="@color/text_secondary"
+            android:buttonTint="@color/primary"
+            android:layout_marginTop="8dp" />
 
+        <!-- Action Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -171,24 +237,25 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCancelSubject"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
                 android:text="Cancel"
-                android:textColor="#666666"
-                android:backgroundTint="#F0F0F0"
-                app:cornerRadius="12dp" />
+                android:textColor="@color/text_secondary"
+                android:backgroundTint="@color/surface_variant"
+                app:cornerRadius="14dp"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSaveSubject"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
                 android:text="Save"
                 android:textColor="#FFFFFF"
-                android:backgroundTint="#6200EE"
-                app:cornerRadius="12dp" />
+                android:backgroundTint="@color/primary"
+                app:cornerRadius="14dp" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

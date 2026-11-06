@@ -38,10 +38,16 @@ All data stays on your phone in a local database, so it works with no internet.
 - Edit or delete any subject
 - Final marks, **grade** and **grade point** are worked out automatically
 
+### 🎯 End Sem Target & SGPA Calculator
+- **Swipe any subject box** (left or right) or tap on it to reveal the **End Sem Target Table**
+- Calculates the exact End Sem exam marks needed to achieve each grade (**O, A+, A, B+, B, C, P**)
+- Displays the **resulting Semester SGPA** if that grade is achieved
+- Enforces passing floor rules (minimum 35/100 for Theory, 18/50 for Practical) and flags targets that are mathematically unattainable
+
 ### 📊 Results & charts
 - Big **CGPA** display on the home screen
 - **Bar chart** of SGPA across all semesters (scale 0–10)
-- **Pie chart** of grade points per subject inside each semester
+- **Interactive Donut chart** in each semester: tap any slice to inspect the subject's grade, final marks, and exact SGPA share percentage
 - Everything updates the moment you change a mark
 
 ### 💾 Storage
